@@ -1,0 +1,4 @@
+DumpObject
+==========
+
+.NET object dumper
