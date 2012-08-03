@@ -44,10 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DumpCollectionTests.cs" />
+    <Compile Include="DumpEnumTest.cs" />
     <Compile Include="DumperValueTypeTest.cs" />
     <Compile Include="DumpObjectTest.cs" />
     <Compile Include="DumpSpecificClassTests.cs" />
+    <Compile Include="DumpStructTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\DumpObject\DumpObject.csproj">

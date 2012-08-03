@@ -184,15 +184,19 @@ namespace DumpObject
 
         protected virtual DumpLevel DumpValueType<T>(T value, Type type, int dumpLevel)
         {
-            // ReSharper disable CompareNonConstrainedGenericWithNull
             if ((type.IsClass || type.IsGenericType) && value == null)
-                // ReSharper restore CompareNonConstrainedGenericWithNull
                 return new DumpLevel
                            {
                                Level = dumpLevel,
                                Type = type,
                                Value = null
                            };
+
+            if (type.IsEnum)
+                return DumpEnum(value, type, dumpLevel);
+
+            if (!type.IsPrimitive && type.IsLayoutSequential && !type.IsGenericType) // Struct
+                return DumpObjectInstance(value, type, dumpLevel);
 
             return new DumpLevel
                        {
@@ -202,9 +206,19 @@ namespace DumpObject
                        };
         }
 
+        private DumpLevel DumpEnum<T>(T value, Type type, int dumpLevel)
+        {
+            return new DumpLevel
+                       {
+                           Level = dumpLevel,
+                           Type = type,
+                           Value = type.Name + "." + Enum.GetName(type, value),
+                       };
+        }
+
         protected virtual bool IsValueType(Type type)
         {
-            return type == typeof(string) || type.IsValueType;
+            return type == typeof (string) || type.IsValueType;
         }
 
         protected virtual bool CanContinueDumping(int dumpLevel)
