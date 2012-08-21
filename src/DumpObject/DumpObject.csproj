@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dumper.cs" />
+    <Compile Include="TextDumpExtension.cs" />
     <Compile Include="DumpLevel.cs" />
     <Compile Include="TextDumper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

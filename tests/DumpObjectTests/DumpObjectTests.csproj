@@ -43,14 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DumpCollectionTests.cs" />
-    <Compile Include="DumpEnumTest.cs" />
-    <Compile Include="DumperValueTypeTest.cs" />
-    <Compile Include="DumpObjectTest.cs" />
-    <Compile Include="DumpSpecificClassTests.cs" />
-    <Compile Include="DumpStructTest.cs" />
+    <Compile Include="Dump2TextExtension\Dump2TextTests.cs" />
+    <Compile Include="Dumper Tests\DumpCollectionTests.cs" />
+    <Compile Include="Dumper Tests\DumpEnumTest.cs" />
+    <Compile Include="Dumper Tests\DumperValueTypeTest.cs" />
+    <Compile Include="Dumper Tests\DumpObjectTest.cs" />
+    <Compile Include="Dumper Tests\DumpSpecificClassTests.cs" />
+    <Compile Include="Dumper Tests\DumpStructTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TypesTests.cs" />
+    <Compile Include="Dumper Tests\TypesTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\DumpObject\DumpObject.csproj">

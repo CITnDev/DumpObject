@@ -17,7 +17,6 @@ namespace DumpObject
         /// The default value is 10
         /// </summary>
         public int MaxDumpLevel { get; set; }
-        private static readonly StopDumpLevel StopDumpLevel = new StopDumpLevel();
 
         public DumpLevel Dump<T>(T value)
         {
@@ -27,7 +26,7 @@ namespace DumpObject
         private DumpLevel InternalDump<T>(T value, Type type, int dumpLevel)
         {
             if (!CanContinueDumping(dumpLevel))
-                return StopDumpLevel;
+                return new StopDumpLevel();
 
             if ((type.IsClass || type.IsGenericType) && value == null)
                 return GetNullDumpLevel(type, dumpLevel); 
