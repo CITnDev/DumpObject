@@ -42,3 +42,6 @@ release/latest/
 *.nupkg
 release/*
 BuildZipOutput
+
+#Ignore Nuget packages
+packages/
