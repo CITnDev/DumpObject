@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using System.Linq.Expressions;
 using DumpObject;
 using NUnit.Framework;
+using System.Numerics;
 
 namespace DumpObjectTests
 {
@@ -10,7 +10,7 @@ namespace DumpObjectTests
     public class DumperValueTypeTest
     {
         private Dumper _dumper;
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void InitializeTestSuite()
         {
             _dumper = new Dumper();
@@ -93,6 +93,19 @@ namespace DumpObjectTests
             Assert.NotNull(dump, "Dump shall return a DumpLevel instance.");
             Assert.AreEqual("value", dump.Value, "Dump value shall be 'value'.");
             Assert.AreEqual(typeof(string), dump.Type, "Dump type shall be a string.");
+            Assert.AreEqual(0, dump.Count(), "Dump children count shall be 0.");
+            Assert.AreEqual(0, dump.Level, "Dump level shall be 0.");
+        }
+
+        [Test]
+        public void DumpBigIntegerValueType()
+        {
+            var bi = new BigInteger(1);
+            var dump = _dumper.Dump(bi);
+            
+            Assert.NotNull(dump, "Dump shall return a DumpLevel instance.");
+            Assert.AreEqual("1", dump.Value, "Dump value shall be 1.");
+            Assert.AreEqual(typeof(BigInteger), dump.Type, "Dump type shall be a BigInteger.");
             Assert.AreEqual(0, dump.Count(), "Dump children count shall be 0.");
             Assert.AreEqual(0, dump.Level, "Dump level shall be 0.");
         }

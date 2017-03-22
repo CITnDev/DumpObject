@@ -9,7 +9,7 @@ namespace DumpObjectTests
     public class DumpObjectTest
     {
         private Dumper _dumper;
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void InitializeTestSuite()
         {
             _dumper = new Dumper();

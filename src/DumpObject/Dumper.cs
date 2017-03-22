@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Globalization;
+using System.Numerics;
 using System.Reflection;
 
 namespace DumpObject
@@ -183,6 +184,9 @@ namespace DumpObject
 
         protected virtual DumpLevel DumpValueType<T>(T value, Type type, int dumpLevel)
         {
+            if (CanDirectDumpValueType(type))
+                return DumpDirectValueType(value, type, dumpLevel);
+
             if ((type.IsClass || type.IsGenericType) && value == null)
                 return new DumpLevel
                            {
@@ -203,6 +207,26 @@ namespace DumpObject
                            Type = type,
                            Value = value
                        };
+        }
+
+        protected virtual bool CanDirectDumpValueType(Type type)
+        {
+            return type == typeof(BigInteger);
+        }
+
+        protected virtual DumpLevel DumpDirectValueType<T>(T value, Type type, int dumpLevel)
+        {
+            if (type == typeof(BigInteger))
+                return new DumpLevel
+                {
+                    Level = dumpLevel,
+                    Type = type,
+                    // ReSharper disable PossibleNullReferenceException
+                    Value = value.ToString()
+                    // ReSharper restore PossibleNullReferenceException
+                };
+
+            throw new NotImplementedException();
         }
 
         private DumpLevel DumpEnum<T>(T value, Type type, int dumpLevel)

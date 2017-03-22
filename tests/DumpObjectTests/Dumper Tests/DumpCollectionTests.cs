@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DumpObject;
 using NUnit.Framework;
@@ -9,7 +8,7 @@ namespace DumpObjectTests
     public class DumpCollectionTests
     {
         private Dumper _dumper;
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public void InitializeTestSuite()
         {
             _dumper = new Dumper();
