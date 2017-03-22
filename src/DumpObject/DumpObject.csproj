@@ -44,7 +44,6 @@
     <Compile Include="Dumper.cs" />
     <Compile Include="TextDumpExtension.cs" />
     <Compile Include="DumpLevel.cs" />
-    <Compile Include="TextDumper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
